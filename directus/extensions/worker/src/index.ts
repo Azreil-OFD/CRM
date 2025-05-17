@@ -1,5 +1,7 @@
 import { defineModule } from '@directus/extensions-sdk';
-import ModuleComponent from './module.vue';
+import ModuleComponent from './pages/module.vue';
+import HomeComponent from './pages/home.vue';
+import OrdersComponent from './pages/orders.vue';
 
 export default defineModule({
 	id: 'worker',
@@ -9,6 +11,14 @@ export default defineModule({
 		{
 			path: '',
 			component: ModuleComponent,
+		},
+		{
+			path: 'home',
+			component: HomeComponent,
+		},
+		{
+			path: 'orders',
+			component: OrdersComponent,
 		},
 	],
 });
