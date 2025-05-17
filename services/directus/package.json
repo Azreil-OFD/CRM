@@ -1,0 +1,17 @@
+{
+  "name": "@monorepo/directus",
+  "version": "1.0.0",
+  "scripts": {
+    "db:up": "docker-compose up -d",
+    "db:down": "docker-compose down",
+    "dev": "directus start",
+    "build": "directus build",
+    "start": "directus start"
+  },
+  "dependencies": {
+    "inquirer": "^12.6.1",
+    "directus": "^11"
+  },
+  "keywords": [],
+  "author": ""
+}

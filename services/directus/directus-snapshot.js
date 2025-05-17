@@ -61,7 +61,6 @@ async function createSnapshot() {
     // Выполняем directus schema snapshot
     execSync(`npx directus schema snapshot "${filepath}"`, {
       stdio: "inherit",
-      cwd: path.resolve(__dirname, "directus"), // меняем рабочую директорию
     });
     console.log(`✅ Снапшот "${filename}" успешно создан/заменён!`);
   } catch (err) {
@@ -92,7 +91,6 @@ async function restoreSnapshot() {
     // Выполняем directus schema apply
     execSync(`npx directus schema apply "${filepath}"`, {
       stdio: "inherit",
-      cwd: path.resolve(__dirname, "directus"),
     });
     console.log(`✅ Схема успешно восстановлена из снапшота "${chosen}"!`);
   } catch (err) {

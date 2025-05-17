@@ -1,10 +1,11 @@
 {
-  "name": "nuxt-app",
-  "private": true,
+  "name": "@monorepo/nuxt-app",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
+    "start": "nuxt start",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"

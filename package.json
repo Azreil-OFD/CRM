@@ -1,20 +1,17 @@
 {
-  "name": "directus-blank-starter",
-  "version": "1.0.0",
-  "description": "",
+  "name": "monorepo",
+  "private": true,
+  "workspaces": [
+    "services/*",
+    "apps/*"
+  ],
+  "devDependencies": {
+    "turbo": "latest"
+  },
   "scripts": {
-    "snapshot": "node directus-snapshot.js"
-  },
-  "dependencies": {
-    "directus": "latest",
-    "inquirer": "^12.6.1"
-  },
-  "directus:template": {
-    "name": "Blank",
-    "description": "Start with a blank slate.",
-    "template": null,
-    "frontends": null
-  },
-  "keywords": [],
-  "author": ""
+    "db:up": "turbo run db:up --filter=@monorepo/directus",
+    "db:down": "turbo run db:down --filter=@monorepo/directus",
+    "dev": "turbo run dev --parallel",
+    "prod": "turbo run prod --parallel"
+  }
 }

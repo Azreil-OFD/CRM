@@ -1,0 +1,27 @@
+{
+    "$schema": "https://turbo.build/schema.json",
+    "pipeline": {
+        "db:up": {
+            "cache": false
+        },
+        "db:down": {
+            "cache": false
+        },
+        "dev": {
+            "dependsOn": [
+                "db:up"
+            ],
+            "cache": false,
+            "persistent": true
+        },
+        "build": {
+            "dependsOn": [
+                "^build"
+            ],
+            "outputs": [
+                "dist/**",
+                ".nuxt/**"
+            ]
+        }
+    }
+}

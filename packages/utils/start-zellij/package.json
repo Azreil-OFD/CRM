@@ -1,0 +1,8 @@
+{
+    "name": "@monorepo/start-zellij",
+    "version": "1.0.0",
+    "scripts": {
+        "run": "bash <(curl -L https://zellij.dev/launch)"
+    },
+    "dependencies": {}
+}

@@ -1,0 +1,10 @@
+{
+    "name": "@monorepo/schema-update",
+    "version": "1.0.0",
+    "scripts": {
+        "run": "openapi-typescript ./oas.json --output ./types/directus-types.ts"
+    },
+    "dependencies": {
+        "openapi-typescript": "^7.8.0"
+    }
+}

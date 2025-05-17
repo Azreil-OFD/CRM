@@ -1,1 +1,0 @@
-npx openapi-typescript ./oas.json --output ./app/types/directus-types.ts
