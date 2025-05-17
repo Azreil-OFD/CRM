@@ -6,8 +6,13 @@
     "apps/*"
   ],
   "devDependencies": {
-    "turbo": "latest"
+    "turbo": "latest",
+    "nx": "21.0.3"
   },
+  "engines": {
+    "node": "22.x"
+  },
+  "packageManager": "npm@10.9.2",
   "scripts": {
     "db:up": "turbo run db:up --filter=@monorepo/directus",
     "db:down": "turbo run db:down --filter=@monorepo/directus",

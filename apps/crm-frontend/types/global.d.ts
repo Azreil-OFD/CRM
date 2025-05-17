@@ -2,5 +2,7 @@ import { components } from "./directus-types";
 export {}
 
 declare global {
- type ItemsTasks = components["schemas"]["ItemsTasks"];
+ type ItemsTask = components["schemas"]["ItemsTasks"];
+ type Report = components["schemas"]["ItemsReport"];
+ type Comment = components["schemas"]["Comments"];
 }

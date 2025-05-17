@@ -1,0 +1,71 @@
+{
+	"folders": [
+		{
+			"path": "apps/crm-frontend",
+			"name": "frontend from Nuxt"
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"**/node_modules": true,
+			"**/.turbo": true,
+			"**/dist": true,
+			"**/.nx": true,
+			"**/.data": true,
+			"**/.output": true,
+			"**/.nuxt": true,
+		},
+		"search.exclude": {
+			"**/node_modules": true,
+			"**/.turbo": true,
+			"**/dist": true,
+			"**/.nx": true,
+			"**/.data": true,
+			"**/.output": true,
+			"**/.nuxt": true,
+		},
+		"files.watcherExclude": {
+			"**/node_modules": true,
+			"**/.turbo": true,
+			"**/dist": true,
+			"**/.nx": true,
+			"**/.data": true,
+			"**/.output": true,
+			"**/.nuxt": true,
+		},
+		"typescript.tsserver.maxTsServerMemory": 4096,
+		"typescript.enablePromptUseWorkspaceTsdk": true,
+		"typescript.tsdk": "node_modules/typescript/lib",
+		"javascript.projectRoots": [
+			"./apps",
+			"./packages"
+		],
+		"typescript.projectRoots": [
+			"./apps",
+			"./packages"
+		],
+		"terminal.integrated.profiles.linux": {
+			"repo-root-zsh": {
+				"path": "zsh",
+				"args": [
+					"-i"
+				],
+				"cwd": "${workspaceFolder:./../../}"
+			},
+			"repo-frontend-zsh": {
+				"path": "zsh",
+				"args": [
+					"-i"
+				],
+				"cwd": "${workspaceFolder:apps}"
+			}
+		},
+		"terminal.integrated.defaultProfile.linux": "repo-frontend-zsh",
+		"typescript.tsc.autoDetect": "off",
+		"grunt.autoDetect": "off",
+		"jake.autoDetect": "off",
+		"gulp.autoDetect": "off",
+		"npm.autoDetect": "off",
+		"task.autoDetect": "off"
+	}
+}

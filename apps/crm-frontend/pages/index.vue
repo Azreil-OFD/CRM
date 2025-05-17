@@ -7,11 +7,9 @@
         <li><NuxtLink to="/" class="hover:underline">Профиль</NuxtLink></li>
         <li><NuxtLink to="/tasks" class="hover:underline">Задачи</NuxtLink></li>
       </ul>
-      <NuxtLink to="/settings" class="hover:underline">Настройки</NuxtLink>
     </nav>
 
     <main class="px-6 py-8">
-      <!-- Welcome section -->
       <div class="flex items-center space-x-4">
         <img
           v-if="auth.user?.avatar"
@@ -23,40 +21,32 @@
           <h2 class="text-3xl font-semibold">
             {{ getHello() }}, {{ fullName }}
           </h2>
-          <p class="text-gray-400">Данная версия приложения находиться в режиме разработки! Могут быть баги.</p>
+          <p class="text-gray-400">Профиль сотрудника.</p>
         </div>
       </div>
 
-      <!-- Cards -->
       <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Active Tasks -->
         <div class="bg-gray-800 border border-gray-700 rounded-lg p-6">
-          <h3 class="text-xl font-semibold mb-4">Active Tasks</h3>
+          <h3 class="text-xl font-semibold mb-4">Активные задачи</h3>
           <p class="text-4xl font-bold">{{ tasks.activeCount }}</p>
-          <p class="text-gray-400 mb-6">tasks assigned to you</p>
+          <p class="text-gray-400 mb-6">Задачи в работе</p>
           <NuxtLink
             to="/tasks"
             class="inline-block px-4 py-2 bg-white text-black rounded-lg hover:bg-gray-200 transition"
-          >View All Tasks</NuxtLink>
+          >Показать все задачи</NuxtLink>
         </div>
-
-        <!-- Upcoming Deadlines -->
         <div class="bg-gray-800 border border-gray-700 rounded-lg p-6">
-          <h3 class="text-xl font-semibold mb-4">Upcoming Deadlines</h3>
+          <h3 class="text-xl font-semibold mb-4">Ближайшие дедлайны</h3>
           <ul class="space-y-4">
             <li v-for="task in tasks.upcoming" :key="task.id">
               <div class="flex items-center space-x-2">
                 <span class="text-gray-400">⏰</span>
                 <span class="font-medium">{{ task.title }}</span>
               </div>
-              <p class="text-gray-500 text-sm">Due {{ formatDate(task.deadline) }}</p>
+              <p class="text-gray-500 text-sm">Истекает {{ formatDate(task.deadline) }}</p>
               <hr class="border-gray-700 my-2" />
             </li>
           </ul>
-          <NuxtLink
-            to="/tasks"
-            class="inline-block px-4 py-2 border border-gray-600 text-gray-300 rounded-lg hover:border-gray-500 transition"
-          >View All Tasks</NuxtLink>
         </div>
       </div>
     </main>
@@ -103,6 +93,6 @@ function formatDate(dateStr) {
 
 onMounted(async () => {
   user.value = (await auth.getUser()).value
-  await tasks.loadTasks()
+  await tasks.getTasks()
 })
 </script>

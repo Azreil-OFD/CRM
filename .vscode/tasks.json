@@ -1,0 +1,48 @@
+// .vscode/tasks.json
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Turbo: db:up",
+      "type": "shell",
+      "command": "npx turbo run db:up",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "Turbo: db:down",
+      "type": "shell",
+      "command": "npx turbo run db:down",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "Turbo: dev",
+      "type": "shell",
+      "command": "npx turbo run dev",
+      "dependsOn": ["Turbo: db:up"],
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "Turbo: prod",
+      "type": "shell",
+      "command": "npx turbo run prod",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated"
+      }
+    }
+  ]
+}
