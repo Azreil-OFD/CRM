@@ -1,46 +1,79 @@
 <template>
-  <div class="min-h-screen bg-gray-900 text-white">
-    <!-- Navbar -->
-    <nav class="flex items-center justify-between px-6 py-4 bg-gray-800">
-      <h1 class="text-2xl font-bold">TCRM</h1>
-      <ul class="flex space-x-4">
-        <li><NuxtLink to="/" class="hover:underline">Профиль</NuxtLink></li>
-        <li><NuxtLink to="/tasks" class="hover:underline font-semibold">Задачи</NuxtLink></li>
-      </ul>
-    </nav>
+  <div class="bg-gray-900 text-white min-h-screen font-sans">
+    <!-- Header -->
+    <header class="bg-gray-800 px-4 py-2 flex justify-between items-center shadow-md">
+      <div class="flex items-center space-x-2">
+        <span class="text-xl font-bold">TCRM</span>
+      </div>
+      <nav class="space-x-4">
+        <a href="#" class="hover:text-gray-400">Профиль</a>
+        <a href="#" class="hover:text-gray-400">Задачи</a>
+      </nav>
+    </header>
 
-    <main class="px-6 py-8">
-      <h2 class="text-3xl font-semibold mb-6">Задачи</h2>
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+      <h1 class="text-2xl font-bold mb-6">Задачи</h1>
 
-      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <div
-          v-for="task in sortedTasks"
-          :key="task.id"
-          :class="['border rounded-lg p-6 space-y-3', borderColor(task.deadline)]"
-        >
-          <div class="flex justify-between items-start">
-            <h3 class="text-xl font-semibold">{{ task.title }}</h3>
-            <span class="text-sm font-medium" :class="statusColor(task.deadline)">
-              {{ statusLabel(task.deadline) }}
-            </span>
+      <!-- Task Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Overdue Task Card -->
+        <div class="bg-red-800 border border-red-500 rounded-lg p-4 shadow-md">
+          <h2 class="text-lg font-bold mb-2">ывфвы</h2>
+          <p class="text-sm text-red-400">Просрочено</p>
+          <p class="text-sm mt-2">вfvfvf</p>
+          <p class="text-sm">inProgress</p>
+          <div class="flex items-center mt-2">
+            <span class="bg-red-500 text-white px-2 py-1 rounded-full mr-2">17</span>
+            <span class="text-sm text-gray-400">May 17, 2025</span>
           </div>
+          <button class="mt-4 px-4 py-2 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg">
+            Детали
+          </button>
+        </div>
 
-          <p class="text-gray-300 text-sm">{{ task.description }}</p>
-
-          <div class="flex items-center text-gray-400 text-sm">
-            <span class="mr-2">📅</span>
-            <span>{{ formatDate(task.deadline) }}</span>
+        <!-- Pending Task Card -->
+        <div class="bg-yellow-800 border border-yellow-500 rounded-lg p-4 shadow-md">
+          <h2 class="text-lg font-bold mb-2">пойти куда надо</h2>
+          <p class="text-sm text-yellow-400">Осталось: 44ч 15м 36с</p>
+          <p class="text-sm mt-2">фывфв</p>
+          <p class="text-sm">waiting</p>
+          <div class="flex items-center mt-2">
+            <span class="bg-yellow-500 text-white px-2 py-1 rounded-full mr-2">17</span>
+            <span class="text-sm text-gray-400">May 20, 2025</span>
           </div>
+          <button class="mt-4 px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold rounded-lg">
+            Детали
+          </button>
+        </div>
 
-          <NuxtLink
-            :to="`/tasks/${task.id}`"
-            class="inline-block px-4 py-2 border border-gray-600 text-gray-200 rounded-lg hover:bg-gray-700 transition"
-          >Детали</NuxtLink>
+        <!-- Upcoming Task Card -->
+        <div class="bg-green-800 border border-green-500 rounded-lg p-4 shadow-md">
+          <h2 class="text-lg font-bold mb-2">asdasda</h2>
+          <p class="text-sm text-green-400">Ещё есть время</p>
+          <p class="text-sm mt-2">sdasdasdasd</p>
+          <p class="text-sm">waiting</p>
+          <div class="flex items-center mt-2">
+            <span class="bg-green-500 text-white px-2 py-1 rounded-full mr-2">17</span>
+            <span class="text-sm text-gray-400">May 30, 2025</span>
+          </div>
+          <button class="mt-4 px-4 py-2 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg">
+            Детали
+          </button>
         </div>
       </div>
     </main>
+
+    <!-- Floating Action Button (FAB) -->
+    <div class="fixed bottom-4 right-4 z-50">
+      <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+        </svg>
+      </button>
+    </div>
   </div>
-</template>
+</template>что алчто 
 
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue'
@@ -63,7 +96,7 @@ const sortedTasks = computed(() => {
 
 
 onMounted(async () => {
-  tasksList.value = await tasksStore.getTasks()
+  tasksList.value = await tasksStore.load()
   intervalId = setInterval(() => {
     now.value = new Date()
   }, 1000)
