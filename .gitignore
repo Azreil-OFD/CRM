@@ -1,7 +1,10 @@
 /.directus-template-cli
 /node_modules
 /package-lock.json
-
-
+.nuxt
+node_modules
+.data
+dist
+.env
 .nx/cache
 .nx/workspace-data
